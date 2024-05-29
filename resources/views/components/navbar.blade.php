@@ -13,13 +13,14 @@
                 </ul>
                 <div class="d-flex align-items-center">
                     @guest
-                        <a class="btn btn-sm btn-outline-secondary mx-2" href="">Registrati</a>
-                        <a class="btn btn-sm btn-outline-secondary mx-2" href="">Entra</a>
+                        <a class="btn btn-sm btn-outline-secondary mx-2" href="{{route('register')}}">Registrati</a>
+                        <a class="btn btn-sm btn-outline-secondary mx-2" href="{{route('login')}}">Entra</a>
                     @else
-                        <span>Benvenuto, {{ Auth::user()->name }}</span>
-                        <form action="" method="POST">
+                        <span class="text-white mx-2">Benvenuto, {{ Auth::user()->name }}</span>
+                        <a class="btn btn-sm btn-outline-light mx-2" href="{{route('articles.dashboard')}}"><i class="bi bi-columns-gap"></i></a>
+                        <form class="m-auto" action="{{route('logout')}}" method="POST">
                             @csrf
-                            <button class="btn btn-sm btn-outline-secondary mx-2" type="submit">Logout</button>
+                            <button class="btn btn-sm btn-outline-danger mx-2" type="submit">Logout</button>
                         </form>
                     @endguest
                 </div>

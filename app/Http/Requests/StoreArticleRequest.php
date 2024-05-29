@@ -11,7 +11,7 @@ class StoreArticleRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,21 @@ class StoreArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required',
+            'autors' => 'required',
+            'categories' => 'required',
+            'texts' => 'nullable',
+            'image' => 'nullable'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'title.require' => 'Il titolo è obbligatorio',
+            'autors.required' => 'Inserisci l autore',
+            'categories.required' => 'Inserisci la categoria',
+
         ];
     }
 }

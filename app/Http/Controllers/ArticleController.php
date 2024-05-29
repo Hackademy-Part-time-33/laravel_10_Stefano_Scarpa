@@ -13,15 +13,17 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $article = Article::paginate(8);
+        return view('articles.index', compact('article'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function dashboard(){
+        return view('articles.dashboard');
+    }
+
     public function create()
     {
-        //
+        return view('articles.create');
     }
 
     /**
