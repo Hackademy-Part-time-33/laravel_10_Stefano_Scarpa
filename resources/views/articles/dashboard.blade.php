@@ -16,8 +16,8 @@
                     <div class="h-100 p-5 text-bg-dark rounded-3">
                         <h2>Amministra i post</h2>
                         
-                        <button class="btn btn-outline-light"
-                        type="button">Vedi post</button>
+                        <a class="btn btn-outline-light"
+                        type="button" href="{{route('articles.index')}}">Vedi post</a>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -36,6 +36,7 @@
                 
                 <button class="btn btn-outline-secondary"
                 type="button">Vedi autori</button>
+            </div>
             </div>
         </div>
     </div>

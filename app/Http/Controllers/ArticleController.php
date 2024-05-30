@@ -14,8 +14,8 @@ class ArticleController extends Controller
     */
     public function index()
     {
-        $article = Article::paginate(8);
-        return view('articles.index', compact('article'));
+        $articles = Article::paginate(8);
+        return view('articles.index', compact('articles'));
     }
     
     public function dashboard(){
@@ -55,7 +55,7 @@ class ArticleController extends Controller
     */
     public function show(Article $article)
     {
-        //
+        return view('articles.show', compact('article'));
     }
     
     /**
@@ -79,6 +79,7 @@ class ArticleController extends Controller
     */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+        return redirect()->route('articles.index');
     }
 }

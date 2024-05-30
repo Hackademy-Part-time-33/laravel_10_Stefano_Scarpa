@@ -22,7 +22,9 @@
     
     <x-navbar />
     
-    {{$slot}}
+    <div>
+        {{$slot}}
+    </div>
     
     <x-footer />
     <!-- Bootstrap core JS-->
