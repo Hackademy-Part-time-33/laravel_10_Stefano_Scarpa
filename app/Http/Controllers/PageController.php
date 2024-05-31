@@ -8,20 +8,20 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function homepage(){
-        $article = Article::all();
+        $articles = Article::all();
 
-        return view('welcome', compact('article'));
+        return view('welcome', compact('articles'));
     }
     
     public function contacts(){
-        $article = Article::all();
+        $articles = Article::all();
 
-        return view('contacts', compact('article'));
+        return view('contacts', compact('articles'));
     }
     
     public function blog(){
-        $article = Article::all();
+        $articles = Article::all();
 
-        return view('blog', compact('article'));
+        return view('blog', compact('articles'));
     }
 }

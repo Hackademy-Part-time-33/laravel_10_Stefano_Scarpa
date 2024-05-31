@@ -19,3 +19,21 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+
+
+
+// hide/show password
+let password = document.querySelector('.pass-view');
+let icon = document.querySelector('.icon');
+
+icon.addEventListener('click', ()=> {
+    if (password.type === "password") {
+        password.type = "text";
+        icon.classList.remove("bi-eye");
+        icon.classList.add("bi-eye-slash");
+    } else {
+        password.type = "password";
+        icon.classList.remove("bi-eye-slash");
+        icon.classList.add("bi-eye");
+    }
+})

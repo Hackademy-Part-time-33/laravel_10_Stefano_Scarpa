@@ -15,7 +15,8 @@
             @enderror
         </div>
         <div class="form-floating mb-3">
-            <textarea name="texts" id="texts" cols="100%" rows="8" placeholder="Inserisci il testo">{{old('texts')}}</textarea>
+            <textarea class="form-control" name="texts" id="floatingTextarea2" rows="10" style="height: 300px;">{{old('texts')}}</textarea>
+            <label for="floatingTextarea2" class="form-label">Inserisci qui il testo</label>
             @error('texts')
                 {{ $message }}
             @enderror

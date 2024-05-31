@@ -4,3 +4,22 @@ body {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
 }
+
+.chars {
+    height: 20ch;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+}
+
+.btn {
+    border-radius: 0px;
+}
+
+.navbar {
+    height: 55px;
+}
+
+.input-group-text {
+    background-color: transparent;
+}

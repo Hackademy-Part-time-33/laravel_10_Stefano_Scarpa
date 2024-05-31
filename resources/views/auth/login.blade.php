@@ -14,7 +14,10 @@
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="password">
+                        <div class="input-group mb-3">
+                            <input type="password" name="password" class="form-control pass-view" id="password">
+                            <span class="input-group-text" id="basic-addon2"><i class="bi bi-eye icon"></i></span>
+                        </div>
                         @error('password')
                             <span>{{$message}}</span>
                         @enderror
@@ -25,6 +28,4 @@
             </div>
         </div>
     </div>
-
-
 </x-backLayout>

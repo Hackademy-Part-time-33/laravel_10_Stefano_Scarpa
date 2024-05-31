@@ -4,7 +4,7 @@
 
     <h2 class="h1">Modifica l'articolo</h2>
     <p class="mb-5">Per modificare l'articolo entra nei cambi e fai le tue modifiche e poi clicca su salva</p>
-    <form action="{{route('articles.store', ['article' => 'article'])}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('articles.update', compact('article'))}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-floating mb-3">
@@ -16,13 +16,14 @@
             @enderror
         </div>
         <div class="form-floating mb-3">
-            <textarea name="texts" id="texts" cols="100%" rows="8" placeholder="Inserisci il testo">{{ $article->texts }}</textarea>
+            <textarea class="form-control" name="texts" id="floatingTextarea2" rows="10" style="height: 300px;">{{$article->texts}}</textarea>
+            <label for="floatingTextarea2" class="form-label">Inserisci qui il testo</label>
             @error('texts')
                 {{ $message }}
             @enderror
         </div>
         <div class="form-floating mb-3">
-            {{ $article->titles }}
+            <img src="{{Storage::url($article->image)}}" alt="">
             <input class="form-control" id="image" name="image" value type="file">
         </div>
         @error('image')

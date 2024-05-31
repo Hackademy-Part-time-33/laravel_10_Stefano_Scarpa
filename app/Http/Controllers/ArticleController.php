@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
+use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
 class ArticleController extends Controller
@@ -47,7 +48,8 @@ class ArticleController extends Controller
             'status' => $request->status
         ]);
 
-        return redirect()->route('articles.dashboard');
+        session()->flash('success', 'Articolo Creato con successo');
+        return redirect()->route('articles.index');
     }
     
     /**
@@ -71,7 +73,24 @@ class ArticleController extends Controller
     */
     public function update(UpdateArticleRequest $request, Article $article)
     {
-        //
+
+        $path_image = $article->image;
+        if ($request->hasFile('image')) {
+            $file_name = $request->file('image')->getClientOriginalName();
+            $path_image = $request->file('image')->storeAs('public/images', $file_name);
+        };
+
+        $article->update([
+            'titles' => $request->titles,
+            // 'slug' => str()->slug($request->titles, '-'),
+            'texts' => $request->texts,
+            'image' => $path_image,
+            // 'user_id' => auth()->user()->id,
+            'status' => $request->status
+        ]);
+
+        session()->flash('success', 'Articolo Modificato con successo');
+        return redirect()->route('articles.index');
     }
     
     /**
@@ -80,6 +99,7 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         $article->delete();
+        session()->flash('success', 'Articolo cancellato con successo');
         return redirect()->route('articles.index');
     }
 }
