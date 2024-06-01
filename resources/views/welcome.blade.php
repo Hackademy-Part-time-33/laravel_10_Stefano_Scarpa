@@ -1,16 +1,16 @@
 <x-main>
     <main class="flex-shrink-0">
         <!-- Header-->
-        <header class="bg-dark py-5">
+        <header class="py-5 cover-top">
             <div class="container px-5">
                 <div class="row gx-5 align-items-center justify-content-center">
                     <div class="col-lg-8 col-xl-7 col-xxl-6">
                         <div class="my-5 text-center text-xl-start">
-                            <h1 class="display-5 fw-bolder text-white mb-2">A Bootstrap 5 template for modern businesses</h1>
+                            <h1 class="display-5 fw-bold text-white mb-2">Scopri nuovi luoghi da visitare ed esplorare</h1>
                             <p class="lead fw-normal text-white-50 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!</p>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
-                                <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
+                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{{route('blog')}}">Scopri di più</a>
+                                <a class="btn btn-outline-light btn-lg px-4" href="{{route('contacts')}}">Contattaci</a>
                             </div>
                         </div>
                     </div>
@@ -24,8 +24,8 @@
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-8 col-xl-6">
                         <div class="text-center">
-                            <h2 class="fw-bolder">From our blog</h2>
-                            <p class="lead fw-normal text-muted mb-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque fugit ratione dicta mollitia. Officiis ad.</p>
+                            <h2 class="fw-bolder">Alcuni dei nostri luoghi</h2>
+                            <p class="lead fw-normal text-muted mb-5">Qui puoi trovare ispirazione per un'avventura da intraprendere</p>
                         </div>
                     </div>
                 </div>

@@ -6,13 +6,13 @@ use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
 use App\Models\User;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Mail;
 
 class ArticleController extends Controller
 {
-    /**
-    * Display a listing of the resource.
-    */
+
     public function index()
     {
         $articles = Article::paginate(8);

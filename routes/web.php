@@ -10,8 +10,9 @@ Route::get('/blog', [PageController::class, 'blog'])->name('blog');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [ArticleController::class, 'dashboard'])->name('articles.dashboard');
-    Route::resource('articles', ArticleController::class);
+    Route::resource('articles', ArticleController::class)->except(['show']);
 });
+Route::get('/article/{article}', [ArticleController::class, 'show'])->name('articles.show');
 
 
 
