@@ -22,6 +22,17 @@
             @enderror
         </div>
         <div class="form-floating mb-3">
+            <select class="form-select" name="author_id" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                @foreach ($authors as $author)    
+                <option value="{{$author->id}}">{{$author->firstname . ' ' . $author->lastname}}</option>
+                @endforeach
+              </select>
+            @error('texts')
+                {{ $message }}
+            @enderror
+        </div>
+        <div class="form-floating mb-3">
             <input class="form-control" id="image" name="image" value type="file">
         </div>
         @error('image')

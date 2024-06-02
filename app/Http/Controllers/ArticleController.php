@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
+use App\Models\Author;
 use App\Models\User;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
@@ -25,7 +26,8 @@ class ArticleController extends Controller
     
     public function create()
     {
-        return view('articles.create');
+        $authors = Author::all();
+        return view('articles.create', compact('authors'));
     }
     
     /**
@@ -45,7 +47,8 @@ class ArticleController extends Controller
             'texts' => $request->texts,
             'image' => $path_image,
             'user_id' => auth()->user()->id,
-            'status' => $request->status
+            'status' => $request->status,
+            'author_id' => $request->author_id,
         ]);
 
         session()->flash('success', 'Articolo Creato con successo');

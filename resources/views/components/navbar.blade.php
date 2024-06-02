@@ -14,7 +14,7 @@
                 <div class="d-flex align-items-center">
                     @guest
                         {{-- <a class="btn btn-sm btn-outline-secondary mx-2" href="{{route('register')}}">Registrati</a> --}}
-                        <a class="btn btn-sm text-white mx-2" href="{{route('login')}}"><i class="bi bi-person h5"></i></a>
+                        <a class="btn btn-sm text-white mx-2" href="{{route('login')}}"><i class="bi bi-box-arrow-in-right h5"></i></a>
                     @else
                         <span class="text-white me-2 fw-lighter">Ciao, <span class="fw-bold">{{ Auth::user()->name }}</span></span>
                         <a class="btn btn-sm text-white" href="{{route('articles.dashboard')}}"><i class="bi bi-columns-gap"></i></a>

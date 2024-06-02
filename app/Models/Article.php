@@ -14,6 +14,11 @@ class Article extends Model
         'texts',
         'image',
         'user_id',
-        'status' 
+        'status',
+        'author_id' 
     ];
+
+    public function author(){
+        return $this->belongsTo(Author::class);
+    }
 }
