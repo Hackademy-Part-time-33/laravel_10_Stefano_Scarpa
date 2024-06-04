@@ -6,13 +6,20 @@ use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
 use App\Models\Author;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Mail;
 
-class ArticleController extends Controller
+class ArticleController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('auth', except: ['show']),
+        ];
+    }
 
     public function index()
     {
@@ -27,7 +34,8 @@ class ArticleController extends Controller
     public function create()
     {
         $authors = Author::all();
-        return view('articles.create', compact('authors'));
+        $categories = Category::all();
+        return view('articles.create', compact('authors', 'categories'));
     }
     
     /**
@@ -40,7 +48,8 @@ class ArticleController extends Controller
             $file_name = $request->file('image')->getClientOriginalName();
             $path_image = $request->file('image')->storeAs('public/images', $file_name);
         }
-        Article::create([
+        
+        $article = Article::create([
     
             'titles' => $request->titles,
             'slug' => str()->slug($request->titles, '-'),
@@ -50,6 +59,8 @@ class ArticleController extends Controller
             'status' => $request->status,
             'author_id' => $request->author_id,
         ]);
+
+        $article->categories()->attach($request->categories);
 
         session()->flash('success', 'Articolo Creato con successo');
         return redirect()->route('articles.index');
@@ -68,7 +79,8 @@ class ArticleController extends Controller
     */
     public function edit(Article $article)
     {
-        return view('articles.edit', compact('article'));
+        $categories = Category::all();
+        return view('articles.edit', compact('article', 'categories'));
     }
     
     /**
@@ -91,6 +103,9 @@ class ArticleController extends Controller
             // 'user_id' => auth()->user()->id,
             'status' => $request->status
         ]);
+
+        //in alternativa prima metodo detach() e poi attach()
+        $article->categories()->sync($request->categories);
 
         session()->flash('success', 'Articolo Modificato con successo');
         return redirect()->route('articles.index');

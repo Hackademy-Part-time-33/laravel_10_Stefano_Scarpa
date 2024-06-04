@@ -1,5 +1,5 @@
 <x-main>
-    <div class="rounded-3 py-5 px-4 px-md-5 mb-5">
+    <div class="rounded-3 py-5 px-4 px-md-5 mb-5 container">
 
         <h2 class="mt-5">In questa sezione trovi la lista di tutti gli autori</h2>
         <p class="mb-5">Da qui puoi: visualizzare, modificare o cancellare gli autori</p>
@@ -28,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($authors as $author)
+                @forelse ($authors as $author)
                     <tr>
                         <th scope="row">#{{ $author->id }}</th>
                         <td>{{ $author->id }}</td>
@@ -55,7 +55,10 @@
                             </div>
                         </td>
                     </tr>
-                @endforeach
+                    @empty
+                    <p>nessun autore</p>
+
+                @endforelse
 
             </tbody>
         </table>

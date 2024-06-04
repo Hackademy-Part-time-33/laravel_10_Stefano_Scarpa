@@ -1,5 +1,5 @@
 <x-main>
-    <div class="rounded-3 py-5 px-4 px-md-5 mb-5">
+    <div class="rounded-3 py-5 px-4 px-md-5 mb-5 container">
 
         <h2 class="mt-5">In questa sezione trovi la lista di tutti i post</h2>
         <p class="mb-5">Da qui puoi: visualizzare, modificare o cancellare i tuoi post</p>

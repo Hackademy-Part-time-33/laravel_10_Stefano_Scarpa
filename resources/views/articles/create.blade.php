@@ -32,6 +32,15 @@
                 {{ $message }}
             @enderror
         </div>
+        <div class="mb-3">
+            @foreach ($categories as $category)
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="categories[]"
+                        value="{{ $category->id }}">
+                    <label class="form-check-label" for="category_id">{{ $category->name }}</label>
+                </div>
+            @endforeach
+        </div>
         <div class="form-floating mb-3">
             <input class="form-control" id="image" name="image" value type="file">
         </div>
